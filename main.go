@@ -3,12 +3,25 @@ package main
 type PUZZLE [9][9]int
 
 func printPuzzle(p *PUZZLE) {
+
+	println("┌───────┬───────┬───────┐")
 	for i := 0; i < 9; i++ {
 		for j := 0; j < 9; j++ {
-			print(p[i][j], " ")
+			if j == 0 || j == 3 || j == 6 {
+				print("│ ")
+			}
+			if p[i][j] == 0 {
+				print("  ")
+			} else {
+				print(p[i][j], " ")
+			}
 		}
-		println("")
+		println("│")
+		if i == 2 || i == 5 {
+			println("├───────┼───────┼───────┤")
+		}
 	}
+	println("└───────┴───────┴───────┘")
 }
 
 func findNextEmpty(p *PUZZLE) (row, col int) {
